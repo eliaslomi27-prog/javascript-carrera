@@ -1,37 +1,44 @@
 import readline from 'readline';
-import { calcularIngresoAnual, evaluarPerfil, calcularHorasEstudio } from './calculadora.js';
+import { calcularIngresoAnual, evaluarPerfil, calcularHorasEstudio, obtenerTasaCambioUSD } from './calculadora.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-console.log("==========================================");
-console.log("   SISTEMA MODULAR DE PLAN DE CARRERA   ");
-console.log("==========================================");
-
-// Uso de funciones importadas del módulo calculadora
-const salarioBase = 4000;
-const ingresoAnual = calcularIngresoAnual(salarioBase);
-const evaluacion = evaluarPerfil(8, "B2");
-
-console.log(`Meta Mensual: $${salarioBase} USD | Meta Anual: $${ingresoAnual} USD`);
-console.log(`Estado: ${evaluacion.mensaje}\n`);
-
-rl.question("¿Cuántas horas diarias vas a dedicar al estudio?: ", (respuesta) => {
-  const horas = Number(respuesta);
-  const reporteTiempo = calcularHorasEstudio(horas);
-
-  console.log("\n--- REPORTE DE DEDICACIÓN ---");
-  console.log(`Horas semanales: ${reporteTiempo.semanales} hrs`);
-  console.log(`Total acumulado (8 semanas): ${reporteTiempo.total} hrs`);
-  
-  if (reporteTiempo.ritmoCorrecto) {
-    console.log("Evaluación: ¡Ritmo excelente para conseguir trabajo rápido!");
-  } else {
-    console.log("Evaluación: Te recomendamos subir a 3-4 horas diarias.");
-  }
-
+async function iniciarPrograma() {
   console.log("==========================================");
-  rl.close();
-});
+  console.log("   SISTEMA MODULAR Y ASÍNCRONO TECH      ");
+  console.log("==========================================");
+
+  // Llamada asíncrona con await
+  const tasaCambio = await obtenerTasaCambioUSD();
+  
+  const salarioBaseUSD = 4000;
+  const salarioLocal = salarioBaseUSD * tasaCambio;
+  const evaluacion = evaluarPerfil(8, "B2");
+
+  console.log(`[API Response] Tasa actual: 1 USD = $${tasaCambio}`);
+  console.log(`Meta Mensual: $${salarioBaseUSD} USD (~$${salarioLocal.toLocaleString()} Moneda Local)`);
+  console.log(`Estado: ${evaluacion.mensaje}\n`);
+
+  rl.question("¿Cuántas horas diarias vas a dedicar al estudio?: ", (respuesta) => {
+    const horas = Number(respuesta);
+    const reporteTiempo = calcularHorasEstudio(horas);
+
+    console.log("\n--- REPORTE DE DEDICACIÓN ---");
+    console.log(`Horas semanales: ${reporteTiempo.semanales} hrs`);
+    console.log(`Total acumulado (8 semanas): ${reporteTiempo.total} hrs`);
+    
+    if (reporteTiempo.ritmoCorrecto) {
+      console.log("Evaluación: ¡Ritmo excelente para conseguir trabajo rápido!");
+    } else {
+      console.log("Evaluación: Te recomendamos subir a 3-4 horas diarias.");
+    }
+
+    console.log("==========================================");
+    rl.close();
+  });
+}
+
+iniciarPrograma();

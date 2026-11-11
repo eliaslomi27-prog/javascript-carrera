@@ -1,4 +1,3 @@
-calculadora.js
 // Módulo de cálculos financieros y de tiempo
 
 export function calcularIngresoAnual(salarioMensual) {
@@ -23,4 +22,15 @@ export function calcularHorasEstudio(horasDiarias) {
     total: total8Semanas,
     ritmoCorrecto: total8Semanas >= 120
   };
+}
+
+// Simulación de llamada asíncrona a una API de tasas de cambio
+export async function obtenerTasaCambioUSD() {
+  console.log("\n[API] Conectando con el servidor de divisas en vivo...");
+  
+  // Simular un tiempo de espera de red de 1.5 segundos
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  
+  // Retornar la tasa de cambio (ejemplo: 4000 COP/USD)
+  return 4000; 
 }
