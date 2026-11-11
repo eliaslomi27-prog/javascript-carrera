@@ -1,100 +1,37 @@
-// 1. Variables de tu perfil profesional
-const nombreProgramador = "Programador Profesional";
-let salarioObjetivoUSD = 4000;
-let semanasEstudio = 8;
-
-// 2. Cálculo de ingresos proyectados
-let ingresosAnuales = salarioObjetivoUSD * 12;
-
-// 3. Mostrar resultados en pantalla
-console.log("==========================================");
-console.log("¡BIENVENIDO AL SISTEMA DE PROGRAMACIÓN!");
-console.log("==========================================");
-console.log("Desarrollador:", nombreProgramador);
-console.log("Meta de ingreso mensual:", "$" + salarioObjetivoUSD + " USD");
-console.log("Meta de ingreso anual:", "$" + ingresosAnuales + " USD");
-console.log("Tiempo estimado de preparación:", semanasEstudio + " semanas");
-console.log("==========================================");
-// 4. Simulando un aumento de sueldo tras 1 año de experiencia
-salarioObjetivoUSD = 6000; 
-ingresosAnuales = salarioObjetivoUSD * 12;
-
-console.log("\n--- PROYECCIÓN AÑO 2 (CON EXPERIENCIA) ---");
-console.log("Nuevo salario mensual:", "$" + salarioObjetivoUSD + " USD");
-console.log("Nuevo ingreso anual:", "$" + ingresosAnuales + " USD");
-console.log("==========================================");
-// 5. Tomar decisiones lógicas con if/else
-let nivelIngles = "B2"; // Opciones: "A1", "A2", "B1", "B2", "C1"
-
-console.log("\n--- EVALUACIÓN DE PERFIL LABORAL ---");
-
-if (semanasEstudio >= 8 && (nivelIngles === "B2" || nivelIngles === "C1")) {
-  console.log("ESTADO: ¡Listo para postular a empleos remotamente en USD!");
-} else {
-  console.log("ESTADO: Necesitas reforzar tu inglés o completar las 8 semanas de estudio.");
-}
-console.log("==========================================");
-// 6. Bucles: Automatizando las 8 semanas de estudio
-console.log("\n--- AVANCE DE TU PLAN DE ESTUDIO (SEMANA A SEMANA) ---");
-
-for (let semana = 1; semana <= 8; semana++) {
-  console.log("Semana " + semana + ": Completada con éxito 🚀");
-}
-
-console.log("==========================================")
-// 7. Arrays: Lista de tecnologías a aprender
-const habilidadesRequeridas = ["Git & GitHub", "JavaScript ES6+", "TypeScript", "React.js", "Node.js"];
-
-console.log("\n--- STACK TÉCNICO A DOMINAR ---");
-console.log("Total de tecnologías principales:", habilidadesRequeridas.length);
-
-// Recorrer la lista con un bucle for
-for (let i = 0; i < habilidadesRequeridas.length; i++) {
-  console.log("Módulo " + (i + 1) + ": " + habilidadesRequeridas[i]);
-}
-console.log("==========================================");
-// 8. Funciones: Calculadora de ingresos según las horas trabajadas
-function calcularSalarioPorHoras(horasPorSemana, tarifaPorHora) {
-  let horasAlMes = horasPorSemana * 4;
-  let ingresoMensual = horasAlMes * tarifaPorHora;
-  return ingresoMensual;
-}
-
-// Usamos la función con diferentes escenarios
-let trabajoTiempoCompleto = calcularSalarioPorHoras(40, 25); // 40 hrs/semana a $25/hr
-let trabajoFreelance = calcularSalarioPorHoras(20, 45);        // 20 hrs/semana a $45/hr
-
-console.log("\n--- CALCULADORA DE INGRESOS CON FUNCIONES ---");
-console.log("Opción 1 (Tiempo Completo):", "$" + trabajoTiempoCompleto + " USD/mes");
-console.log("Opción 2 (Freelance Especializado):", "$" + trabajoFreelance + " USD/mes");
-console.log("==========================================");
-// 9. Entrada de datos por teclado (Programa Interactivo)
-const readline = require('readline');
+import readline from 'readline';
+import { calcularIngresoAnual, evaluarPerfil, calcularHorasEstudio } from './calculadora.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-console.log("\n==========================================");
-console.log("   TEST DE SIMULACIÓN DE CARRERA TECH");
+console.log("==========================================");
+console.log("   SISTEMA MODULAR DE PLAN DE CARRERA   ");
 console.log("==========================================");
 
-rl.question("¿Cuántas horas diarias vas a estudiar?: ", (horasRespuesta) => {
-  let horasDiarias = Number(horasRespuesta);
-  let horasSemanales = horasDiarias * 5;
-  let totalHoras8Semanas = horasSemanales * 8;
+// Uso de funciones importadas del módulo calculadora
+const salarioBase = 4000;
+const ingresoAnual = calcularIngresoAnual(salarioBase);
+const evaluacion = evaluarPerfil(8, "B2");
 
-  console.log("\n--- RESULTADO DE TU DEDICACIÓN ---");
-  console.log("Horas a la semana:", horasSemanales + " hrs");
-  console.log("Total de horas en 8 semanas:", totalHoras8Semanas + " hrs");
+console.log(`Meta Mensual: $${salarioBase} USD | Meta Anual: $${ingresoAnual} USD`);
+console.log(`Estado: ${evaluacion.mensaje}\n`);
 
-  if (totalHoras8Semanas >= 120) {
-    console.log("EVALUACIÓN: ¡Ritmo excelente para conseguir trabajo rápido!");
-  } else {
-    console.log("EVALUACIÓN: Te recomendamos subir a 3-4 horas diarias.");
-  }
+rl.question("¿Cuántas horas diarias vas a dedicar al estudio?: ", (respuesta) => {
+  const horas = Number(respuesta);
+  const reporteTiempo = calcularHorasEstudio(horas);
+
+  console.log("\n--- REPORTE DE DEDICACIÓN ---");
+  console.log(`Horas semanales: ${reporteTiempo.semanales} hrs`);
+  console.log(`Total acumulado (8 semanas): ${reporteTiempo.total} hrs`);
   
+  if (reporteTiempo.ritmoCorrecto) {
+    console.log("Evaluación: ¡Ritmo excelente para conseguir trabajo rápido!");
+  } else {
+    console.log("Evaluación: Te recomendamos subir a 3-4 horas diarias.");
+  }
+
   console.log("==========================================");
-  rl.close(); // Cierra la interfaz de lectura
+  rl.close();
 });
