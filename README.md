@@ -1,19 +1,23 @@
-README.md
 # 🚀 Plan de Carrera & Fundamentos de JavaScript
 
-Proyecto inicial donde practico los conceptos fundamentales de JavaScript modernos para mi preparación como **Full-Stack / Remote Software Engineer**.
+Proyecto modular e interactivo desarrollado en Node.js donde practico los conceptos fundamentales y avanzados de JavaScript moderno para mi preparación como **Full-Stack / Remote Software Engineer**.
 
 ## 🛠️ Tecnologías Aplicadas
-- **JavaScript (ES6+)**: Variables (`let`/`const`), Condicionales (`if/else`), Bucles (`for`), Arrays y Funciones.
-- **Node.js**: Entorno de ejecución y lectura de datos por consola (`readline`).
+- **JavaScript (ES6+)**: Variables (`let`/`const`), Condicionales (`if/else`), Bucles (`for`), Arrays, Funciones y **Módulos (`import`/`export`)**.
+- **Asincronía (`async`/`await`)**: Simulación de consumo de APIs externas mediante `Promise` y formateo numérico (`toLocaleString`).
+- **Node.js**: Entorno de ejecución, soporte para ES Modules (`package.json`) e interactividad por consola (`readline`).
 - **Git & GitHub**: Control de versiones y publicación de repositorio.
 
-## 💻 Contenido del Proyecto (`index.js`)
-1. **Perfil & Proyecciones Financieras**: Cálculo dinámico de ingresos anuales proyectados en USD.
-2. **Evaluación de Perfil Laboral**: Lógica condicional evaluando semanas de estudio y nivel de inglés.
-3. **Simulación de Estudio**: Bucles automatizando el avance semanal.
-4. **Calculadora de Ingresos**: Funciones reutilizables según tarifas por hora.
-5. **Programa Interactivo**: Captura de datos ingresados por teclado en consola.
+## 📁 Estructura del Proyecto
+- `calculadora.js`: Módulo con la lógica de negocio, cálculos financieros, evaluación de perfil y consumo asíncrono.
+- `index.js`: Punto de entrada principal que coordina los módulos y gestiona la entrada interactiva por consola.
+- `package.json`: Configuración del proyecto habilitado para sintaxis de módulos de ES6.
+
+## 💻 Funcionalidades
+1. **Consumo Asíncrono Simulado**: Conexión remota mediante `async/await` para obtener tasas de cambio.
+2. **Proyecciones Financieras**: Conversión automática a moneda local.
+3. **Evaluación de Perfil**: Lógica condicional sobre semanas de estudio e inglés.
+4. **Calculadora de Tiempo**: Validación interactiva de horas diarias ingresadas por teclado.
 
 ---
 *Desarrollado en mi ruta hacia empleos remotos en dólares.*
