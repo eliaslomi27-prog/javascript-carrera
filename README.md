@@ -21,3 +21,8 @@ Proyecto modular e interactivo desarrollado en Node.js donde practico los concep
 
 ---
 *Desarrollado en mi ruta hacia empleos remotos en dólares.*
+- **Asincronía (`async`/`await`)**: Consumo de APIs en tiempo real mediante `fetch` nativo de Node.js, manejo de excepciones con `try/catch` y formateo numérico (`toLocaleString`).
+1. **Consumo de API Real en Vivo**: Petición HTTP asíncrona a la API de CoinGecko para obtener la cotización del Bitcoin en tiempo real.
+git add .
+git commit -m "docs: actualizar README reflejando consumo de API real con fetch"
+git push
