@@ -1,5 +1,5 @@
 import readline from 'readline';
-import { calcularIngresoAnual, evaluarPerfil, calcularHorasEstudio, obtenerTasaCambioUSD } from './calculadora.js';
+import { calcularIngresoAnual, evaluarPerfil, calcularHorasEstudio, obtenerPrecioBitcoinUSD } from './calculadora.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -8,18 +8,18 @@ const rl = readline.createInterface({
 
 async function iniciarPrograma() {
   console.log("==========================================");
-  console.log("   SISTEMA MODULAR Y ASÍNCRONO TECH      ");
+  console.log("   SISTEMA DE CONSUMO DE API EN VIVO      ");
   console.log("==========================================");
 
-  // Llamada asíncrona con await
-  const tasaCambio = await obtenerTasaCambioUSD();
+  // Llamada asíncrona real a servidor externo
+  const precioBTC = await obtenerPrecioBitcoinUSD();
   
-  const salarioBaseUSD = 4000;
-  const salarioLocal = salarioBaseUSD * tasaCambio;
+  const metaMensualUSD = 4000;
+  const equivalenciaBTC = (metaMensualUSD / precioBTC).toFixed(4);
   const evaluacion = evaluarPerfil(8, "B2");
 
-  console.log(`[API Response] Tasa actual: 1 USD = $${tasaCambio}`);
-  console.log(`Meta Mensual: $${salarioBaseUSD} USD (~$${salarioLocal.toLocaleString()} Moneda Local)`);
+  console.log(`[API Live Response] Precio de 1 BTC: $${precioBTC.toLocaleString()} USD`);
+  console.log(`Meta Mensual: $${metaMensualUSD} USD (~${equivalenciaBTC} BTC)`);
   console.log(`Estado: ${evaluacion.mensaje}\n`);
 
   rl.question("¿Cuántas horas diarias vas a dedicar al estudio?: ", (respuesta) => {

@@ -24,13 +24,16 @@ export function calcularHorasEstudio(horasDiarias) {
   };
 }
 
-// Simulación de llamada asíncrona a una API de tasas de cambio
-export async function obtenerTasaCambioUSD() {
-  console.log("\n[API] Conectando con el servidor de divisas en vivo...");
+// Conexión REAL a una API pública de cripto/divisas en internet
+export async function obtenerPrecioBitcoinUSD() {
+  console.log("\n[API REAL] Conectando con el servidor de CoinGecko en internet...");
   
-  // Simular un tiempo de espera de red de 1.5 segundos
-  await new Promise(resolve => setTimeout(resolve, 1500));
-  
-  // Retornar la tasa de cambio (ejemplo: 4000 COP/USD)
-  return 4000; 
+  try {
+    const respuesta = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+    const datos = await respuesta.json();
+    return datos.bitcoin.usd;
+  } catch (error) {
+    console.log("Error al consultar la API en vivo, usando valor base fallback.");
+    return 65000;
+  }
 }
