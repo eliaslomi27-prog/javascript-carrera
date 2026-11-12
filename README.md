@@ -1,28 +1,23 @@
-# 🚀 Plan de Carrera & Fundamentos de JavaScript
+# 🚀 Tech Career Dashboard & USD Projections
 
-Proyecto modular e interactivo desarrollado en Node.js donde practico los conceptos fundamentales y avanzados de JavaScript moderno para mi preparación como **Full-Stack / Remote Software Engineer**.
+Aplicación web modular e interactiva desarrollada con **HTML5, CSS3 y JavaScript moderno (ES6+)** para calcular proyecciones de estudio y monitorear indicadores financieros en tiempo real mediante consumo de APIs externas.
 
 ## 🛠️ Tecnologías Aplicadas
-- **JavaScript (ES6+)**: Variables (`let`/`const`), Condicionales (`if/else`), Bucles (`for`), Arrays, Funciones y **Módulos (`import`/`export`)**.
-- **Asincronía (`async`/`await`)**: Simulación de consumo de APIs externas mediante `Promise` y formateo numérico (`toLocaleString`).
-- **Node.js**: Entorno de ejecución, soporte para ES Modules (`package.json`) e interactividad por consola (`readline`).
-- **Git & GitHub**: Control de versiones y publicación de repositorio.
+- **JavaScript (ES6+)**: ES Modules (`import`/`export`), manipulación dinámica del DOM (`addEventListener`, `getElementById`), control de formularios y asincronía.
+- **Asincronía (`async`/`await`)**: Peticiones HTTP en vivo mediante `fetch` a la API de CoinGecko y formateo numérico (`toLocaleString`).
+- **HTML5 & CSS3**: Diseño responsivo con Flexbox, variables CSS (`:root`), interfaz moderna con tema oscuro (Dark Theme) y maquetación semántica.
+- **Git & GitHub**: Control de versiones, flujo de trabajo modular y publicación de proyecto.
 
 ## 📁 Estructura del Proyecto
-- `calculadora.js`: Módulo con la lógica de negocio, cálculos financieros, evaluación de perfil y consumo asíncrono.
-- `index.js`: Punto de entrada principal que coordina los módulos y gestiona la entrada interactiva por consola.
-- `package.json`: Configuración del proyecto habilitado para sintaxis de módulos de ES6.
+- `index.html`: Estructura semántica del Dashboard.
+- `styles.css`: Hojas de estilo con arquitectura de variables y tema oscuro.
+- `app.js`: Orquestador principal de la interfaz web y eventos del DOM.
+- `calculadora.js`: Módulo reutilizable con la lógica de negocio y consumo asíncrono de APIs.
+- `package.json`: Configuración de soporte para módulos ES6.
 
 ## 💻 Funcionalidades
-1. **Consumo Asíncrono Simulado**: Conexión remota mediante `async/await` para obtener tasas de cambio.
-2. **Proyecciones Financieras**: Conversión automática a moneda local.
-3. **Evaluación de Perfil**: Lógica condicional sobre semanas de estudio e inglés.
-4. **Calculadora de Tiempo**: Validación interactiva de horas diarias ingresadas por teclado.
+1. **Monitoreo Cripto en Tiempo Real**: Petición asíncrona a la API de CoinGecko para cotización en dólares del BTC y conversión automática de metas.
+2. **Evaluador Dinámico de Dedicación**: Cálculo instantáneo de horas semanales/mensuales de estudio con badges condicionales.
 
 ---
-*Desarrollado en mi ruta hacia empleos remotos en dólares.*
-- **Asincronía (`async`/`await`)**: Consumo de APIs en tiempo real mediante `fetch` nativo de Node.js, manejo de excepciones con `try/catch` y formateo numérico (`toLocaleString`).
-1. **Consumo de API Real en Vivo**: Petición HTTP asíncrona a la API de CoinGecko para obtener la cotización del Bitcoin en tiempo real.
-git add .
-git commit -m "docs: actualizar README reflejando consumo de API real con fetch"
-git push
+*Proyecto desarrollado en mi ruta de preparación como Remote Full-Stack Engineer.*
