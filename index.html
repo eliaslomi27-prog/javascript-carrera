@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Career Dashboard | USD Projections</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>🚀 Dashboard de Plan de Carrera Tech</h1>
+      <p>Proyecciones financieras y monitoreo en tiempo real para empleos remotos en USD.</p>
+    </header>
+
+    <section class="card api-card">
+      <h2>📈 Mercado Crypto / Divisas en Vivo</h2>
+      <div id="crypto-status" class="status-box">Cargando datos de CoinGecko...</div>
+    </section>
+
+    <section class="card calculator-card">
+      <h2>⏱️ Evaluador de Dedicación</h2>
+      <form id="study-form">
+        <label for="hours">Horas diarias de estudio:</label>
+        <input type="number" id="hours" min="1" max="16" placeholder="Ej. 4" required>
+        <button type="submit" id="btn-calculate">Calcular Plan</button>
+      </form>
+      
+      <div id="results" class="results-box hidden">
+        <p><strong>Horas semanales:</strong> <span id="weekly-hours">-</span> hrs</p>
+        <p><strong>Total (8 semanas):</strong> <span id="total-hours">-</span> hrs</p>
+        <p id="evaluation-tag" class="badge"></p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
